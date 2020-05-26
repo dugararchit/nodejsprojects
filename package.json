@@ -1,0 +1,29 @@
+{
+  "name": "zee5-ms-favorites",
+  "version": "1.0.0",
+  "description": "User Api - favorites microservice",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://nayan777@bitbucket.org/zee5in/zee5-ms-favorites.git"
+  },
+  "author": "Nayan Lakhwani",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/zee5in/zee5-ms-favorites#readme",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "@types/node": "^13.7.6",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.15",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}
