@@ -13,9 +13,10 @@
         "REDISPORT": 6379
     },
     "dbDetails": {
-        "HOST": "z5-prod.secondary.database.windows.net",
-        "DBUSER": "zee5cmsuser",
-        "PASSWORD": "#9691F87P306vo3aF0880rJsN",
-        "DATABASE": "z5-user-prod"
+        "HOST": "localhost",
+        "USER": "archit",
+        "PASSWORD": "root",
+        "DB": "zee5-axinom",
+        "mysqlPort": "3306"
     }
 }

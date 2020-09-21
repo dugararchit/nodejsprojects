@@ -7,7 +7,7 @@ router.use(bodyParser.json());
 
 //Favourits API Routes
 router.get('/getRecords', favorites.getFavorites);
-// router.post('/insertRecords', favorites.insertFavorites);
+router.post('/insertRecord', favorites.insertFavorites);
 // router.post('/updateRecords', favorites.updateFavorites);
 // router.delete('/deleteRecords', favorites.deleteFavorites);
 module.exports = router;

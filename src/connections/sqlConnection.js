@@ -1,22 +1,18 @@
 const sql = require('mssql')
 const config = require("../config/config.json");
-const dbConfig = {
-    server: config.dbDetails.HOST,
-    user: config.dbDetails.DBUSER,
-    password: config.dbDetails.PASSWORD,
-    database: config.dbDetails.DATABASE,
-    options: {
-        enableArithAbort: true
-    }
-};
-const poolPromise = new sql.ConnectionPool(dbConfig)
-    .connect()
-    .then(pool => {
-        console.log('Connected to MSSQL')
-        return pool
-    })
-    .catch(err => console.log('Database Connection Failed! Bad Config: ', err))
+const mysql = require('mysql2/promise');
 
-module.exports = {
-    sql, poolPromise
-}
+let dbDetails = config.dbDetails;
+const connection = mysql.createPool({
+    host: dbDetails.HOST,
+    user: dbDetails.USER,
+    password: dbDetails.PASSWORD,
+    database: dbDetails.DB,
+    port: dbDetails.mysqlPort,
+    waitForConnections: true,
+    connectionLimit: 99,
+    queueLimit: 0,
+    dateStrings: true
+});
+
+module.exports = connection;
