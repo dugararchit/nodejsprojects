@@ -8,6 +8,6 @@ router.use(bodyParser.json());
 //Favourits API Routes
 router.get('/getRecords', favorites.getFavorites);
 router.post('/insertRecord', favorites.insertFavorites);
-// router.post('/updateRecords', favorites.updateFavorites);
-// router.delete('/deleteRecords', favorites.deleteFavorites);
+router.put('/updateRecord/:id', favorites.updateFavorites);
+router.delete('/deleteRecord/:id', favorites.deleteFavorites);
 module.exports = router;

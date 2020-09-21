@@ -3,7 +3,8 @@ const db = new dbConn();
 const tables = require("../enums/tables");
 const moment = require("moment");
 
-const { getRecords, insertRecords } = require("../models/schemas");
+const { getRecords, insertRecords, updateRecords } = require("../models/schemas");
+const { update } = require("lodash");
 
 module.exports = {
     getFavorites: async function (req, res) {
@@ -51,5 +52,44 @@ module.exports = {
                 res.send(err);
             }
         }
-    }
+    },
+    updateFavorites: async function (req, res) {
+        try {
+            await updateRecords.validateAsync(req.body);
+            let id = req.params.id;
+            let setValues = "";
+            setValues += (req.body.AssetId != undefined) ? `AssetId='${req.body.AssetId}',` : "";
+            setValues += (req.body.AssetType != undefined) ? `AssetType='${req.body.AssetType}',` : "";
+            setValues += (req.body.Duration != undefined) ? `Duration='${req.body.Duration}',` : "";
+            setValues += `modified_at='${moment().format("YYYY-MM-DD HH:mm:ss")}'`;
+            const result = await db.updateRecords(tables.Favorites, setValues, `Id='${id}'`);
+            res.send(result);
+        }
+        catch (err) {
+
+            if (err && err.details && err.details.length > 0) {
+                console.log(err.details);
+                //===error with validations
+                res.status(400).send({
+                    status: false,
+                    msg: `${err.details[0]["message"]}` || "Required Params not present"
+                });
+            } else {
+                console.log(err);
+                res.send(err);
+            }
+        }
+    },
+    deleteFavorites: async function (req, res) {
+        try {
+            let id = req.params.id;
+            const result = await db.deleteRecord(tables.Favorites, `Id='${id}'`);
+            res.send(result);
+        }
+        catch (err) {
+            console.log(err);
+            res.send(err);
+
+        }
+    },
 };

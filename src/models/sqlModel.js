@@ -111,7 +111,6 @@ module.exports = class DB {
       return new Promise(async (resolve, reject) => {
         table = "`" + table + "`";
         let sql = `DELETE FROM ${table} WHERE ${where}`;
-        custom.log(sql)
         try {
           const [articleRow, articleFields] = await connection.promise().query(sql);
           resolve(articleRow);

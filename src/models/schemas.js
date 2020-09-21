@@ -19,6 +19,16 @@ const insertRecords = Joi.object({
 
 });
 
+const updateRecords = Joi.object({
+    UserId: Joi.string(),
+    AssetId: Joi
+        .required(),
+    AssetType: Joi
+        .required(),
+    Duration: Joi
+        .required()
+});
+
 module.exports = {
-    getRecords, insertRecords
+    getRecords, insertRecords, updateRecords
 };
