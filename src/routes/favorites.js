@@ -5,7 +5,9 @@ const tokenValidator = require("../middlewares/tokenValidator");
 const favorites = require("../controllers/favorites");
 router.use(bodyParser.json());
 
-//Routes
-router.get('/intro',favorites);
-
+//Favourits API Routes
+router.get('/getRecords', favorites.getFavorites);
+// router.post('/insertRecords', favorites.insertFavorites);
+// router.post('/updateRecords', favorites.updateFavorites);
+// router.delete('/deleteRecords', favorites.deleteFavorites);
 module.exports = router;

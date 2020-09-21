@@ -4,7 +4,7 @@
   "description": "User Api - favorites microservice",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app",
+    "start": "nodemon src/app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,15 +15,25 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/zee5in/zee5-ms-favorites#readme",
   "dependencies": {
-    "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
     "@types/node": "^13.7.6",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "error-stack-parser": "^2.0.6",
+    "express": "^4.17.1",
+    "express-http-context": "^1.2.4",
+    "ioredis": "^4.17.1",
+    "jade": "^1.11.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
+    "moment": "^2.26.0",
+    "mssql": "^6.2.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
+    "redis": "^3.0.2",
     "request": "^2.88.2"
   }
 }

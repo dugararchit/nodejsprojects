@@ -1,4 +1,21 @@
 {
     "apiVersion": "1.0.0",
-    "port": 3000
+    "port": 3000,
+    "DATETIMEFORMAT": "YYYY-MM-DD HH:mm:ss",
+    "logging": {
+        "debug": 1,
+        "debug_speed": 0,
+        "min_speed": 500,
+        "logLevel": "error"
+    },
+    "redis": {
+        "REDISHOST": "127.0.0.1",
+        "REDISPORT": 6379
+    },
+    "dbDetails": {
+        "HOST": "z5-prod.secondary.database.windows.net",
+        "DBUSER": "zee5cmsuser",
+        "PASSWORD": "#9691F87P306vo3aF0880rJsN",
+        "DATABASE": "z5-user-prod"
+    }
 }
