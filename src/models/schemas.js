@@ -7,13 +7,6 @@ const allowedAuthObjects = {
     "X-Z5-Guest-Token": ""
 };
 
-const getRecords = Joi.object({
-    ...{
-        Id: Joi.string()
-            .required()
-    },
-    ...allowedAuthObjects
-});
 
 const insertRecords = Joi.object({
     ...{
@@ -44,5 +37,5 @@ const updateRecords = Joi.object({
 });
 
 module.exports = {
-    getRecords, insertRecords, updateRecords
+    insertRecords, updateRecords
 };

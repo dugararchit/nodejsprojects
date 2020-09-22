@@ -3,14 +3,14 @@ const db = new dbConn();
 const tables = require("../enums/tables");
 const moment = require("moment");
 
-const { getRecords, insertRecords, updateRecords } = require("../models/schemas");
+const { insertRecords, updateRecords } = require("../models/schemas");
 const { update } = require("lodash");
 
 module.exports = {
     getFavorites: async function (req, res) {
         try {
-            await getRecords.validateAsync(req.body);
-            const result = await db.getRecords(tables.Favorites, "*", `Id='${req.body.Id}'`);
+            let id = req.params.id;
+            const result = await db.getRecords(tables.Favorites, "*", `Id='${id}'`);
             res.send(result);
         }
         catch (err) {

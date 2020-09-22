@@ -1,0 +1,226 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Ms favorites api CRUD Operations",
+    "version": "1.0.0",
+    "title": "Ms favorites api CRUD Operations",
+    "contact": {
+      "name": "zee5"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/favorites",
+  "tags": [
+    {
+      "name": "favorites",
+      "description": "Get favorites records",
+      "externalDocs": {
+        "description": "CRUD for favorites"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/getRecords/{Id}": {
+      "get": {
+        "tags": [
+          "favorites"
+        ],
+        "summary": "Find favorite record  by ID",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "ID of favorites that needs to be fetched",
+            "required": true
+          },
+          {
+            "name": "Access Tokens",
+            "in": "body",
+            "description": "Access token that is default added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getRecords"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Array with ither empty data or non empty data"
+          }
+        }
+      }
+    },
+    "/insertRecord/": {
+      "post": {
+        "tags": [
+          "favorites"
+        ],
+        "summary": "Insert record with desired params ",
+        "parameters": [
+          {
+            "name": "Tokens with data",
+            "in": "body",
+            "description": "Access token that is default added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/insertRecord"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "check counter if affected rows is there"
+          }
+        }
+      }
+    },
+    "/updateRecord/{Id}": {
+      "put": {
+        "tags": [
+          "favorites"
+        ],
+        "summary": "update record ",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "ID to update",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Token with data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/updateRecord"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "check counter if affected rows is there"
+          }
+        }
+      }
+    },
+    "/deleteRecord/{Id}": {
+      "delete": {
+        "tags": [
+          "favorites"
+        ],
+        "summary": "delete record ",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "Id to delete",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Added access tokens",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getRecords"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "check counter if affected rows is there"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getRecords": {
+      "type": "object",
+      "properties": {
+        "Authorization": {
+          "type": "string",
+          "example": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1ODQ0NTUwMDEsImV4cCI6MTYxNTk5MTAwMSwiaXNzIjoiaHR0cHM6Ly91c2VyYXBpLnplZTUuY29tIiwiYXVkIjpbImh0dHBzOi8vdXNlcmFwaS56ZWU1LmNvbS9yZXNvdXJjZXMiLCJzdWJzY3JpcHRpb25hcGkiLCJ1c2VyYXBpIl0sImNsaWVudF9pZCI6InRva2VuX2NsaWVudCIsInN1YiI6IjE0NmRhZTgwLTNiN2YtNDNmZi04ZDI1LTQyMzg1MDA4NTJhNyIsImF1dGhfdGltZSI6MTU4NDQ1NTAwMSwiaWRwIjoibG9jYWwiLCJ1c2VyX2lkIjoiMTQ2ZGFlODAtM2I3Zi00M2ZmLThkMjUtNDIzODUwMDg1MmE3Iiwic3lzdGVtIjoiWjUiLCJhY3RpdmF0aW9uX2RhdGUiOiIyMDE5LTExLTIwVDE2OjMwOjQzIiwiY3JlYXRlZF9kYXRlIjoiMjAxOS0xMS0yMFQxNjoyOTozNSIsInJlZ2lzdHJhdGlvbl9jb3VudHJ5IjoiSU4iLCJ1c2VyX21vYmlsZSI6IjkxOTYwNTY5ODg4OSIsInN1YnNjcmlwdGlvbnMiOiJbe1wiaWRcIjpcIjUyYTRlMTIyLWZjOGUtNDIyZi04OTg0LWU5MmYwZjFjZjQ5Y1wiLFwidXNlcl9pZFwiOlwiMTQ2ZGFlODAtM2I3Zi00M2ZmLThkMjUtNDIzODUwMDg1MmE3XCIsXCJpZGVudGlmaWVyXCI6XCJDUk1cIixcInN1YnNjcmlwdGlvbl9wbGFuXCI6e1wiaWRcIjpcIjAtMTEtNjM5XCIsXCJhc3NldF90eXBlXCI6MTEsXCJzdWJzY3JpcHRpb25fcGxhbl90eXBlXCI6XCJTVk9EXCIsXCJ0aXRsZVwiOlwiQWxsIEFjY2VzcyBQYWNrXCIsXCJvcmlnaW5hbF90aXRsZVwiOlwiQWxsIEFjY2VzcyBQYWNrXCIsXCJzeXN0ZW1cIjpcIlo1XCIsXCJkZXNjcmlwdGlvblwiOlwiQWxsIEFjY2VzcyAtIDEgeXJcIixcImJpbGxpbmdfY3ljbGVfdHlwZVwiOlwiZGF5c1wiLFwiYmlsbGluZ19mcmVxdWVuY3lcIjozNjUsXCJwcmljZVwiOjk5OS4wLFwicHJpY2VzXCI6W10sXCJjdXJyZW5jeVwiOlwiSU5SXCIsXCJjb3VudHJ5XCI6XCJJTlwiLFwiY291bnRyaWVzXCI6W1wiSU5cIl0sXCJzdGFydFwiOlwiMjAxOC0xMC0zMVQwMDowMDowMFpcIixcImVuZFwiOlwiMjAyMS0wMy0zMVQyMzo1OTo1OVpcIixcIm9ubHlfYXZhaWxhYmxlX3dpdGhfcHJvbW90aW9uXCI6dHJ1ZSxcInJlY3VycmluZ1wiOmZhbHNlLFwicGF5bWVudF9wcm92aWRlcnNcIjpbe1wibmFtZVwiOlwiQmlsbERlc2tcIn0se1wibmFtZVwiOlwiUGF5VE1cIn0se1wibmFtZVwiOlwiUGF5dG1RUlwifSx7XCJuYW1lXCI6XCJQYXlVXCJ9LHtcIm5hbWVcIjpcIkdvb2dsZVwiLFwicHJvZHVjdF9yZWZlcmVuY2VcIjpcInplZTVfMTJtX3N2b2RfbnJfaW5cIn0se1wibmFtZVwiOlwiTW9iaWt3aWtcIn0se1wibmFtZVwiOlwiUXdpa2NpbHZlclwifSx7XCJuYW1lXCI6XCJBbWF6b25JQVBcIixcInByb2R1Y3RfcmVmZXJlbmNlXCI6XCJ6ZWU1X2FsbF9hY2Nlc3NfcGFja19pbl8xeVwifSx7XCJuYW1lXCI6XCJBbWF6b25wYXlfbmV3XCJ9XSxcInByb21vdGlvbnNcIjpbXSxcImFzc2V0X3R5cGVzXCI6WzYsMCw5XSxcImFzc2V0X2lkc1wiOltdLFwibnVtYmVyX29mX3N1cHBvcnRlZF9kZXZpY2VzXCI6NSxcIm1vdmllX2F1ZGlvX2xhbmd1YWdlc1wiOltdLFwidHZfc2hvd19hdWRpb19sYW5ndWFnZXNcIjpbXSxcImNoYW5uZWxfYXVkaW9fbGFuZ3VhZ2VzXCI6W10sXCJ2YWxpZF9mb3JfYWxsX2NvdW50cmllc1wiOnRydWV9LFwic3Vic2NyaXB0aW9uX3N0YXJ0XCI6XCIyMDE5LTExLTIwVDE2OjM1OjE3LjQ0M1pcIixcInN1YnNjcmlwdGlvbl9lbmRcIjpcIjIwMjAtMTEtMTlUMjM6NTk6NTlaXCIsXCJzdGF0ZVwiOlwiYWN0aXZhdGVkXCIsXCJyZWN1cnJpbmdfZW5hYmxlZFwiOmZhbHNlLFwicGF5bWVudF9wcm92aWRlclwiOlwiY3JtXCIsXCJmcmVlX3RyaWFsXCI6bnVsbCxcImNyZWF0ZV9kYXRlXCI6XCIyMDE5LTExLTIwVDE2OjM1OjE3LjQ0M1pcIixcImlwX2FkZHJlc3NcIjpcIjE0LjEzOS4yMDcuMjEwXCIsXCJyZWdpb25cIjpcIk5hZ2FsYW5kXCIsXCJhZGRpdGlvbmFsXCI6e1wicGF5bWVudG1vZGVcIjpcIlByZXBhaWRDb2RlXCIsXCJjb3Vwb25jb2RlXCI6XCJaNUZQUjFZT2ZnSVwifSxcImFsbG93ZWRfYmlsbGluZ19jeWNsZXNcIjowLFwidXNlZF9iaWxsaW5nX2N5Y2xlc1wiOjB9XSIsImN1cnJlbnRfY291bnRyeSI6IklOIiwic2NvcGUiOlsic3Vic2NyaXB0aW9uYXBpIiwidXNlcmFwaSJdLCJhbXIiOlsiZGVsZWdhdGlvbiJdfQ.EZ4r27A8iEQv12OotOuAwNNJmMknwkSwSyGXG4YEUThZa3pIriKTdSbTh2_L-_OA26vXY57kbQlRb_l43nNXEdzCYHTSApJhUJU9zRQubqn8nO7dWCldfhpEMEAxM4TaKisxtKqTx3PcNAdz4xCza8uxibMMp9jAy-Yq1P1WjIB5-Dxbod8hge8vaX9uVN1GhYpRladN2Af4y8Edd0y-3aXZaNFHatYKIuxGmsDYgmXXxC4eVawXw-68Li6u2OPWYESFrhvLlvPdncQvk8xXP3ztZMO1J9keBc4BrcHECaBhpOK33RjL-q4NhFBWYwVqWfYvhyoEsGQ2AVXbQ90UWA"
+        },
+        "x-access-token": {
+          "type": "string",
+          "example": "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJwcm9kdWN0X2NvZGUiOiJ6ZWU1QDk3NSIsInBsYXRmb3JtX2NvZGUiOiJXZWJAJCF0Mzg3MTIiLCJpc3N1ZWRBdCI6IjIwMjAtMDMtMjRUMTM6MTc6NDcrMDAwMCIsInR0bCI6ODY0MDB9.icnQwGqT8R4kN_KsuffkKLaPfboguDwQsiQVOrSsALk"
+        },
+        "X-Z5-Guest-Token": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "insertRecord": {
+      "type": "object",
+      "properties": {
+        "Authorization": {
+          "type": "string",
+          "example": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1ODQ0NTUwMDEsImV4cCI6MTYxNTk5MTAwMSwiaXNzIjoiaHR0cHM6Ly91c2VyYXBpLnplZTUuY29tIiwiYXVkIjpbImh0dHBzOi8vdXNlcmFwaS56ZWU1LmNvbS9yZXNvdXJjZXMiLCJzdWJzY3JpcHRpb25hcGkiLCJ1c2VyYXBpIl0sImNsaWVudF9pZCI6InRva2VuX2NsaWVudCIsInN1YiI6IjE0NmRhZTgwLTNiN2YtNDNmZi04ZDI1LTQyMzg1MDA4NTJhNyIsImF1dGhfdGltZSI6MTU4NDQ1NTAwMSwiaWRwIjoibG9jYWwiLCJ1c2VyX2lkIjoiMTQ2ZGFlODAtM2I3Zi00M2ZmLThkMjUtNDIzODUwMDg1MmE3Iiwic3lzdGVtIjoiWjUiLCJhY3RpdmF0aW9uX2RhdGUiOiIyMDE5LTExLTIwVDE2OjMwOjQzIiwiY3JlYXRlZF9kYXRlIjoiMjAxOS0xMS0yMFQxNjoyOTozNSIsInJlZ2lzdHJhdGlvbl9jb3VudHJ5IjoiSU4iLCJ1c2VyX21vYmlsZSI6IjkxOTYwNTY5ODg4OSIsInN1YnNjcmlwdGlvbnMiOiJbe1wiaWRcIjpcIjUyYTRlMTIyLWZjOGUtNDIyZi04OTg0LWU5MmYwZjFjZjQ5Y1wiLFwidXNlcl9pZFwiOlwiMTQ2ZGFlODAtM2I3Zi00M2ZmLThkMjUtNDIzODUwMDg1MmE3XCIsXCJpZGVudGlmaWVyXCI6XCJDUk1cIixcInN1YnNjcmlwdGlvbl9wbGFuXCI6e1wiaWRcIjpcIjAtMTEtNjM5XCIsXCJhc3NldF90eXBlXCI6MTEsXCJzdWJzY3JpcHRpb25fcGxhbl90eXBlXCI6XCJTVk9EXCIsXCJ0aXRsZVwiOlwiQWxsIEFjY2VzcyBQYWNrXCIsXCJvcmlnaW5hbF90aXRsZVwiOlwiQWxsIEFjY2VzcyBQYWNrXCIsXCJzeXN0ZW1cIjpcIlo1XCIsXCJkZXNjcmlwdGlvblwiOlwiQWxsIEFjY2VzcyAtIDEgeXJcIixcImJpbGxpbmdfY3ljbGVfdHlwZVwiOlwiZGF5c1wiLFwiYmlsbGluZ19mcmVxdWVuY3lcIjozNjUsXCJwcmljZVwiOjk5OS4wLFwicHJpY2VzXCI6W10sXCJjdXJyZW5jeVwiOlwiSU5SXCIsXCJjb3VudHJ5XCI6XCJJTlwiLFwiY291bnRyaWVzXCI6W1wiSU5cIl0sXCJzdGFydFwiOlwiMjAxOC0xMC0zMVQwMDowMDowMFpcIixcImVuZFwiOlwiMjAyMS0wMy0zMVQyMzo1OTo1OVpcIixcIm9ubHlfYXZhaWxhYmxlX3dpdGhfcHJvbW90aW9uXCI6dHJ1ZSxcInJlY3VycmluZ1wiOmZhbHNlLFwicGF5bWVudF9wcm92aWRlcnNcIjpbe1wibmFtZVwiOlwiQmlsbERlc2tcIn0se1wibmFtZVwiOlwiUGF5VE1cIn0se1wibmFtZVwiOlwiUGF5dG1RUlwifSx7XCJuYW1lXCI6XCJQYXlVXCJ9LHtcIm5hbWVcIjpcIkdvb2dsZVwiLFwicHJvZHVjdF9yZWZlcmVuY2VcIjpcInplZTVfMTJtX3N2b2RfbnJfaW5cIn0se1wibmFtZVwiOlwiTW9iaWt3aWtcIn0se1wibmFtZVwiOlwiUXdpa2NpbHZlclwifSx7XCJuYW1lXCI6XCJBbWF6b25JQVBcIixcInByb2R1Y3RfcmVmZXJlbmNlXCI6XCJ6ZWU1X2FsbF9hY2Nlc3NfcGFja19pbl8xeVwifSx7XCJuYW1lXCI6XCJBbWF6b25wYXlfbmV3XCJ9XSxcInByb21vdGlvbnNcIjpbXSxcImFzc2V0X3R5cGVzXCI6WzYsMCw5XSxcImFzc2V0X2lkc1wiOltdLFwibnVtYmVyX29mX3N1cHBvcnRlZF9kZXZpY2VzXCI6NSxcIm1vdmllX2F1ZGlvX2xhbmd1YWdlc1wiOltdLFwidHZfc2hvd19hdWRpb19sYW5ndWFnZXNcIjpbXSxcImNoYW5uZWxfYXVkaW9fbGFuZ3VhZ2VzXCI6W10sXCJ2YWxpZF9mb3JfYWxsX2NvdW50cmllc1wiOnRydWV9LFwic3Vic2NyaXB0aW9uX3N0YXJ0XCI6XCIyMDE5LTExLTIwVDE2OjM1OjE3LjQ0M1pcIixcInN1YnNjcmlwdGlvbl9lbmRcIjpcIjIwMjAtMTEtMTlUMjM6NTk6NTlaXCIsXCJzdGF0ZVwiOlwiYWN0aXZhdGVkXCIsXCJyZWN1cnJpbmdfZW5hYmxlZFwiOmZhbHNlLFwicGF5bWVudF9wcm92aWRlclwiOlwiY3JtXCIsXCJmcmVlX3RyaWFsXCI6bnVsbCxcImNyZWF0ZV9kYXRlXCI6XCIyMDE5LTExLTIwVDE2OjM1OjE3LjQ0M1pcIixcImlwX2FkZHJlc3NcIjpcIjE0LjEzOS4yMDcuMjEwXCIsXCJyZWdpb25cIjpcIk5hZ2FsYW5kXCIsXCJhZGRpdGlvbmFsXCI6e1wicGF5bWVudG1vZGVcIjpcIlByZXBhaWRDb2RlXCIsXCJjb3Vwb25jb2RlXCI6XCJaNUZQUjFZT2ZnSVwifSxcImFsbG93ZWRfYmlsbGluZ19jeWNsZXNcIjowLFwidXNlZF9iaWxsaW5nX2N5Y2xlc1wiOjB9XSIsImN1cnJlbnRfY291bnRyeSI6IklOIiwic2NvcGUiOlsic3Vic2NyaXB0aW9uYXBpIiwidXNlcmFwaSJdLCJhbXIiOlsiZGVsZWdhdGlvbiJdfQ.EZ4r27A8iEQv12OotOuAwNNJmMknwkSwSyGXG4YEUThZa3pIriKTdSbTh2_L-_OA26vXY57kbQlRb_l43nNXEdzCYHTSApJhUJU9zRQubqn8nO7dWCldfhpEMEAxM4TaKisxtKqTx3PcNAdz4xCza8uxibMMp9jAy-Yq1P1WjIB5-Dxbod8hge8vaX9uVN1GhYpRladN2Af4y8Edd0y-3aXZaNFHatYKIuxGmsDYgmXXxC4eVawXw-68Li6u2OPWYESFrhvLlvPdncQvk8xXP3ztZMO1J9keBc4BrcHECaBhpOK33RjL-q4NhFBWYwVqWfYvhyoEsGQ2AVXbQ90UWA"
+        },
+        "x-access-token": {
+          "type": "string",
+          "example": "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJwcm9kdWN0X2NvZGUiOiJ6ZWU1QDk3NSIsInBsYXRmb3JtX2NvZGUiOiJXZWJAJCF0Mzg3MTIiLCJpc3N1ZWRBdCI6IjIwMjAtMDMtMjRUMTM6MTc6NDcrMDAwMCIsInR0bCI6ODY0MDB9.icnQwGqT8R4kN_KsuffkKLaPfboguDwQsiQVOrSsALk"
+        },
+        "X-Z5-Guest-Token": {
+          "type": "string",
+          "example": ""
+        },
+        "Id": {
+          "type": "string",
+          "example": "8FB0481F-1596-43BC-A2F9-FBD3AAFA68F1-test"
+        },
+        "UserId": {
+          "type": "string",
+          "example": "8FB0481F-1596-43BC-A2F9-FBD3AAFA68F1-test"
+        },
+        "AssetId": {
+          "type": "string",
+          "example": "0-1-35074-test"
+        },
+        "AssetType": {
+          "type": "string",
+          "example": "1"
+        },
+        "Duration": {
+          "type": "string",
+          "example": "1800"
+        }
+      }
+    },
+    "updateRecord": {
+      "type": "object",
+      "properties": {
+        "Authorization": {
+          "type": "string",
+          "example": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE1ODQ0NTUwMDEsImV4cCI6MTYxNTk5MTAwMSwiaXNzIjoiaHR0cHM6Ly91c2VyYXBpLnplZTUuY29tIiwiYXVkIjpbImh0dHBzOi8vdXNlcmFwaS56ZWU1LmNvbS9yZXNvdXJjZXMiLCJzdWJzY3JpcHRpb25hcGkiLCJ1c2VyYXBpIl0sImNsaWVudF9pZCI6InRva2VuX2NsaWVudCIsInN1YiI6IjE0NmRhZTgwLTNiN2YtNDNmZi04ZDI1LTQyMzg1MDA4NTJhNyIsImF1dGhfdGltZSI6MTU4NDQ1NTAwMSwiaWRwIjoibG9jYWwiLCJ1c2VyX2lkIjoiMTQ2ZGFlODAtM2I3Zi00M2ZmLThkMjUtNDIzODUwMDg1MmE3Iiwic3lzdGVtIjoiWjUiLCJhY3RpdmF0aW9uX2RhdGUiOiIyMDE5LTExLTIwVDE2OjMwOjQzIiwiY3JlYXRlZF9kYXRlIjoiMjAxOS0xMS0yMFQxNjoyOTozNSIsInJlZ2lzdHJhdGlvbl9jb3VudHJ5IjoiSU4iLCJ1c2VyX21vYmlsZSI6IjkxOTYwNTY5ODg4OSIsInN1YnNjcmlwdGlvbnMiOiJbe1wiaWRcIjpcIjUyYTRlMTIyLWZjOGUtNDIyZi04OTg0LWU5MmYwZjFjZjQ5Y1wiLFwidXNlcl9pZFwiOlwiMTQ2ZGFlODAtM2I3Zi00M2ZmLThkMjUtNDIzODUwMDg1MmE3XCIsXCJpZGVudGlmaWVyXCI6XCJDUk1cIixcInN1YnNjcmlwdGlvbl9wbGFuXCI6e1wiaWRcIjpcIjAtMTEtNjM5XCIsXCJhc3NldF90eXBlXCI6MTEsXCJzdWJzY3JpcHRpb25fcGxhbl90eXBlXCI6XCJTVk9EXCIsXCJ0aXRsZVwiOlwiQWxsIEFjY2VzcyBQYWNrXCIsXCJvcmlnaW5hbF90aXRsZVwiOlwiQWxsIEFjY2VzcyBQYWNrXCIsXCJzeXN0ZW1cIjpcIlo1XCIsXCJkZXNjcmlwdGlvblwiOlwiQWxsIEFjY2VzcyAtIDEgeXJcIixcImJpbGxpbmdfY3ljbGVfdHlwZVwiOlwiZGF5c1wiLFwiYmlsbGluZ19mcmVxdWVuY3lcIjozNjUsXCJwcmljZVwiOjk5OS4wLFwicHJpY2VzXCI6W10sXCJjdXJyZW5jeVwiOlwiSU5SXCIsXCJjb3VudHJ5XCI6XCJJTlwiLFwiY291bnRyaWVzXCI6W1wiSU5cIl0sXCJzdGFydFwiOlwiMjAxOC0xMC0zMVQwMDowMDowMFpcIixcImVuZFwiOlwiMjAyMS0wMy0zMVQyMzo1OTo1OVpcIixcIm9ubHlfYXZhaWxhYmxlX3dpdGhfcHJvbW90aW9uXCI6dHJ1ZSxcInJlY3VycmluZ1wiOmZhbHNlLFwicGF5bWVudF9wcm92aWRlcnNcIjpbe1wibmFtZVwiOlwiQmlsbERlc2tcIn0se1wibmFtZVwiOlwiUGF5VE1cIn0se1wibmFtZVwiOlwiUGF5dG1RUlwifSx7XCJuYW1lXCI6XCJQYXlVXCJ9LHtcIm5hbWVcIjpcIkdvb2dsZVwiLFwicHJvZHVjdF9yZWZlcmVuY2VcIjpcInplZTVfMTJtX3N2b2RfbnJfaW5cIn0se1wibmFtZVwiOlwiTW9iaWt3aWtcIn0se1wibmFtZVwiOlwiUXdpa2NpbHZlclwifSx7XCJuYW1lXCI6XCJBbWF6b25JQVBcIixcInByb2R1Y3RfcmVmZXJlbmNlXCI6XCJ6ZWU1X2FsbF9hY2Nlc3NfcGFja19pbl8xeVwifSx7XCJuYW1lXCI6XCJBbWF6b25wYXlfbmV3XCJ9XSxcInByb21vdGlvbnNcIjpbXSxcImFzc2V0X3R5cGVzXCI6WzYsMCw5XSxcImFzc2V0X2lkc1wiOltdLFwibnVtYmVyX29mX3N1cHBvcnRlZF9kZXZpY2VzXCI6NSxcIm1vdmllX2F1ZGlvX2xhbmd1YWdlc1wiOltdLFwidHZfc2hvd19hdWRpb19sYW5ndWFnZXNcIjpbXSxcImNoYW5uZWxfYXVkaW9fbGFuZ3VhZ2VzXCI6W10sXCJ2YWxpZF9mb3JfYWxsX2NvdW50cmllc1wiOnRydWV9LFwic3Vic2NyaXB0aW9uX3N0YXJ0XCI6XCIyMDE5LTExLTIwVDE2OjM1OjE3LjQ0M1pcIixcInN1YnNjcmlwdGlvbl9lbmRcIjpcIjIwMjAtMTEtMTlUMjM6NTk6NTlaXCIsXCJzdGF0ZVwiOlwiYWN0aXZhdGVkXCIsXCJyZWN1cnJpbmdfZW5hYmxlZFwiOmZhbHNlLFwicGF5bWVudF9wcm92aWRlclwiOlwiY3JtXCIsXCJmcmVlX3RyaWFsXCI6bnVsbCxcImNyZWF0ZV9kYXRlXCI6XCIyMDE5LTExLTIwVDE2OjM1OjE3LjQ0M1pcIixcImlwX2FkZHJlc3NcIjpcIjE0LjEzOS4yMDcuMjEwXCIsXCJyZWdpb25cIjpcIk5hZ2FsYW5kXCIsXCJhZGRpdGlvbmFsXCI6e1wicGF5bWVudG1vZGVcIjpcIlByZXBhaWRDb2RlXCIsXCJjb3Vwb25jb2RlXCI6XCJaNUZQUjFZT2ZnSVwifSxcImFsbG93ZWRfYmlsbGluZ19jeWNsZXNcIjowLFwidXNlZF9iaWxsaW5nX2N5Y2xlc1wiOjB9XSIsImN1cnJlbnRfY291bnRyeSI6IklOIiwic2NvcGUiOlsic3Vic2NyaXB0aW9uYXBpIiwidXNlcmFwaSJdLCJhbXIiOlsiZGVsZWdhdGlvbiJdfQ.EZ4r27A8iEQv12OotOuAwNNJmMknwkSwSyGXG4YEUThZa3pIriKTdSbTh2_L-_OA26vXY57kbQlRb_l43nNXEdzCYHTSApJhUJU9zRQubqn8nO7dWCldfhpEMEAxM4TaKisxtKqTx3PcNAdz4xCza8uxibMMp9jAy-Yq1P1WjIB5-Dxbod8hge8vaX9uVN1GhYpRladN2Af4y8Edd0y-3aXZaNFHatYKIuxGmsDYgmXXxC4eVawXw-68Li6u2OPWYESFrhvLlvPdncQvk8xXP3ztZMO1J9keBc4BrcHECaBhpOK33RjL-q4NhFBWYwVqWfYvhyoEsGQ2AVXbQ90UWA"
+        },
+        "x-access-token": {
+          "type": "string",
+          "example": "eyJ0eXAiOiJqd3QiLCJhbGciOiJIUzI1NiJ9.eyJwcm9kdWN0X2NvZGUiOiJ6ZWU1QDk3NSIsInBsYXRmb3JtX2NvZGUiOiJXZWJAJCF0Mzg3MTIiLCJpc3N1ZWRBdCI6IjIwMjAtMDMtMjRUMTM6MTc6NDcrMDAwMCIsInR0bCI6ODY0MDB9.icnQwGqT8R4kN_KsuffkKLaPfboguDwQsiQVOrSsALk"
+        },
+        "X-Z5-Guest-Token": {
+          "type": "string",
+          "example": ""
+        },
+        "AssetId": {
+          "type": "string",
+          "example": "0-1-35074-test"
+        },
+        "AssetType": {
+          "type": "string",
+          "example": "1"
+        },
+        "Duration": {
+          "type": "string",
+          "example": "1800"
+        }
+      }
+    }
+  }
+}

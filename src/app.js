@@ -7,6 +7,11 @@ const path = require('path');
 const indexRouter = require('./routes/index');
 const favoritesRouter = require('./routes/favorites');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./config/swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -27,7 +32,6 @@ app.use(function (req, res, next) {
 //Declaring Routes
 app.use('/', indexRouter);
 app.use('/favorites', favoritesRouter);
-
 
 //Starting the Server
 try {
