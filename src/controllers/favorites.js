@@ -9,7 +9,7 @@ const { update } = require("lodash");
 module.exports = {
     getFavorites: async function (req, res) {
         try {
-            //await getRecords.validateAsync(req.body);
+            await getRecords.validateAsync(req.body);
             const result = await db.getRecords(tables.Favorites, "*", `Id='${req.body.Id}'`);
             res.send(result);
         }
@@ -30,10 +30,10 @@ module.exports = {
     },
     insertFavorites: async function (req, res) {
         try {
-            //await insertRecords.validateAsync(req.body);
-            delete req.body.Authorization
-            delete req.body["x-access-token"]
-            delete req.body["X-Z5-Guest-Token"]
+            await insertRecords.validateAsync(req.body);
+            delete req.body.Authorization;
+            delete req.body["x-access-token"];
+            delete req.body["X-Z5-Guest-Token"];
 
             req.body.Date = moment().format("YYYY-MM-DD HH:mm:ss");
             let tableComlumns = Object.keys(req.body).join(",");
@@ -58,7 +58,7 @@ module.exports = {
     },
     updateFavorites: async function (req, res) {
         try {
-            //await updateRecords.validateAsync(req.body);
+            await updateRecords.validateAsync(req.body);
             let id = req.params.id;
             let setValues = "";
             setValues += (req.body.AssetId != undefined) ? `AssetId='${req.body.AssetId}',` : "";
