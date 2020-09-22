@@ -9,7 +9,7 @@ const { update } = require("lodash");
 module.exports = {
     getFavorites: async function (req, res) {
         try {
-            await getRecords.validateAsync(req.body);
+            //await getRecords.validateAsync(req.body);
             const result = await db.getRecords(tables.Favorites, "*", `Id='${req.body.Id}'`);
             res.send(result);
         }
