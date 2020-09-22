@@ -6,8 +6,8 @@ const favorites = require("../controllers/favorites");
 router.use(bodyParser.json());
 
 //Favourits API Routes
-router.get('/getRecords', favorites.getFavorites);
-router.post('/insertRecord', favorites.insertFavorites);
-router.put('/updateRecord/:id', favorites.updateFavorites);
-router.delete('/deleteRecord/:id', favorites.deleteFavorites);
+router.get('/getRecords', tokenValidator, favorites.getFavorites);
+router.post('/insertRecord', tokenValidator,  favorites.insertFavorites);
+router.put('/updateRecord/:id',tokenValidator, favorites.updateFavorites);
+router.delete('/deleteRecord/:id',tokenValidator, favorites.deleteFavorites);
 module.exports = router;
