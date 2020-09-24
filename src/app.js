@@ -5,7 +5,7 @@ const app = express()
 const port = api.port
 
 require('./loaders').default({ expressApp: app })
-
+console.log(process.env.DB_URI);
 app.listen(port, err => {
   if (err) {
     console.log(err)

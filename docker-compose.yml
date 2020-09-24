@@ -9,11 +9,12 @@ services:
     container_name: docker-node-mongo
     restart: always
     build: .
+    image: boilerplate:1.0.1
     environment:
-      - DB_URI='mongodb://172.17.255.255:27015/db-name'
-      - JWT_SECRET_KEY='9zVW]9cBNMbO'
+      - DB_URI='mongodb://mongo:27017/boilerplate'
+      - JWT_SECRET_KEY='9zVW]9cBNMbO1'
       - SENDER_MAIL='sample@gmail.com'
-      - SENDER_MAIL_PW='123'
+      - SENDER_MAIL_PW='1231'
     ports:
       - '8080:8080'
     external_links:

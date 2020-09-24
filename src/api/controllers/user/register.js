@@ -9,6 +9,7 @@ export default async (req, res, next) => {
   try {
     await registerSchema.validateAsync(req.body)
 
+    
     const user = await User.create(req.body)
     user.password = null // prevent send pw to client
     req.body.password = null // prevent log pw
