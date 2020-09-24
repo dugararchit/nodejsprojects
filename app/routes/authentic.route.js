@@ -42,7 +42,8 @@ function authentic(req,res) {
 }
 
 
-function signup(req,res) {
+function signup(req,res, next) {
+console.log("test");
   var signUpData=req.body;
   
   //Validating the input entity
@@ -51,7 +52,9 @@ function signup(req,res) {
      return res.status(422).send(json_format.errorMessage);
    }
 
-   authenticService.signup(signUpData).then((data) => {
+
+   console.log(signUpData);
+   authenticService.signup(signUpData, next).then((data) => {
     if(data) {
        res.json({
          "success":true,
@@ -59,7 +62,7 @@ function signup(req,res) {
        });
      }
    }).catch((err) => {
-     mail.mail(err);
+     //mail.mail(err);
      res.json(err);
    });
 

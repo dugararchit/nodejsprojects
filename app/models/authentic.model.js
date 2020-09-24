@@ -31,12 +31,36 @@ function authentic(authenticData) {
 }
 
 
-function signup(user) {
+function signup(user, next) {
+    console.log(user);
     return new Promise((resolve, reject) => {
+        // console.log(bcrypt);
+
+
+        // console.log(db);
+        // db.query("INSERT INTO user(name, username, password, age, state, country) VALUES('" + user.name + "','" + user.username + "','" + user.password + "', '" + user.age + "','" + user.state + "','" + user.country + "')", (error, rows, fields) => {
+        //     console.log(error);
+        //     if (error) {
+        //         dbFunc.connectionRelease;
+        //         reject(error);
+        //     } else {
+        //         dbFunc.connectionRelease;
+        //         resolve(rows);
+        //     }
+        // });
+
+        
+
+
+
+
         bcrypt.genSalt(10, function (err, salt) {
+            console.log(salt, err);
             if (err) {
+                console.log(err);
                 return next(err);
             }
+            console.log(salt, user);
             bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) {
                     return next(err);
@@ -50,7 +74,7 @@ function signup(user) {
                         dbFunc.connectionRelease;
                         reject({"success":false,"message":"user already exist ! try with different user"});
                     } else {
-                        db.query("INSERT INTO user(username,password)VALUES('" + user.username + "','" + user.password + "')", (error, rows, fields) => {
+                        db.query("INSERT INTO user(name, username,password, age, state, country)VALUES('" + user.name + "','" + user.username + "','" + user.password + "', '" + user.age + "','" + user.state + "','" + user.country + "')", (error, rows, fields) => {
                             if (error) {
                                 dbFunc.connectionRelease;
                                 reject(error);

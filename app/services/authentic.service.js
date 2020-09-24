@@ -17,10 +17,10 @@ function authentic(authenticData) {
    
 }
 
-function signup(signUpData) {
-    
+function signup(signUpData, next) {
+    console.log(signUpData);
     return new Promise((resolve,reject) => {
-        authenticModel.signup(signUpData).then((data)=>{
+        authenticModel.signup(signUpData, next).then((data)=>{
             resolve(data);
         }).catch((err) => {
             reject(err);

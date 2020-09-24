@@ -2,10 +2,11 @@ const mysql = require('mysql');
 
 module.exports = mysql.createPool({
     connectionLimit : 100,
-    host : 'localhost',
+    host : '172.22.0.2',
     user :  'root',
-    password: '',
-    database: 'sampleDB'
+    password: 'Udaipur12345#',
+    database: 'sampleDBNew',
+    port: '3306'
 })
 
 

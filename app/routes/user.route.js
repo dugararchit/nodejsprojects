@@ -43,6 +43,8 @@ function getUserById(req,res) {
 }
 
 function addUser(req,res) {
+
+
   var userData=req.body;
   
   //Validating the input entity
